@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="887d7063-9bb9-4c91-9b0a-50e151115992"
+  name="Things"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="54cca31c-f28f-4984-bb1b-83e72860d260"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSokoban.Domain.Things"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="fee7d5b0-909c-4aec-b983-3ad8ffc1439b"
+        name="Thing"
+        visibility="Private"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="fae6ae95-d4b5-455f-85c4-f34011d35c15"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3D(Name%3DThing ArrayRank%3D2 ParentType%3DThing)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5325aae6-9552-4e1c-bc64-58478e941cbd"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3beb35e6-3521-4c3f-9bea-338da8115d07">
+                <propertyInstance
+                  Id="61daab58-3135-4af9-b3c4-7e4aa951a997"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="336685e0-a99d-46d4-b443-64ef316a34eb">
+                <propertyInstance
+                  Id="0db4ca9f-6387-4f06-bb05-fdb54f0b63aa"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b2654db9-ab21-4286-a96c-b7123795b72b">
+                <propertyInstance
+                  Id="1e7d62c6-5682-47f6-9c75-9bcfa5938a12"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0c59ac03-5831-43de-83ad-e3b0cc4d0b80">
+                <propertyInstance
+                  Id="cfecd371-7d26-444e-8261-39d0e25249f3"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e15b973f-8f97-4d9e-bf19-301cb360ead3">
+                <propertyInstance
+                  Id="7cadb994-adce-40a8-a69e-25384712d74c"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8a53773f-1c28-4338-bec8-d6c45111b150"
+        name="Coffin"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="820991ab-7e46-48a3-8b57-7e424bf9d565"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DCoffin"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="cad2cde9-12ff-4b2e-b33c-df87910ce2be"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2244d4f7-e066-445e-a654-70c6543cc31c">
+                <propertyInstance
+                  Id="ede7ddad-1ef0-495d-b3b7-84de6f08cd8b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8a5b5b3a-455f-4650-a068-7fcb0722028c">
+                <propertyInstance
+                  Id="7cbb183b-aaae-4597-88cd-d967907d16a9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="276a625f-d93d-47b8-bde8-d57b3ff390c5">
+                <propertyInstance
+                  Id="027c6b39-09a9-4782-9f00-49129167568d"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e99d9186-991c-4269-9d9e-9264eedcfe55">
+                <propertyInstance
+                  Id="d458b1dc-be80-417b-afa9-e4d09bbad6ed"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="77e2b661-d456-4eb8-9cab-7f2a5037ab8d">
+                <propertyInstance
+                  Id="e8179e2c-504f-41f6-a8d5-412b05d9e541"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c47c117f-6e82-4a3b-a15f-3f7179bd4cf6">
+            <interfaceMoniker
+              Id="548b23c1-3166-4841-b8e1-55d3f6f7c62c"
+              LastKnownName="Thing"
+              LastKnownLocation="Package2_0946.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="09de8522-95c4-41b6-a6e0-dcf3024b6832"
+            name="Coffin"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8928e527-f763-400d-8700-487ba72b5c45"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DCoffin Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b1ebc061-a8df-4344-a1c1-17edb3831000"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="276a25b7-e8d2-466a-8556-5a035b36b33a">
+                    <propertyInstance
+                      Id="6bdd07c4-91ae-450a-93a8-97d1e41a1e3d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1368c3ae-df18-4307-bf65-0877fb19f937">
+                    <propertyInstance
+                      Id="5532e706-b541-4403-a339-787e77c9e839"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7644ccf4-0434-44a4-9a20-cc80ca68b161">
+                    <propertyInstance
+                      Id="85f286b2-0fec-41b7-8275-493a11b1db59"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="813aa508-67f2-471d-a25d-197bfb569452">
+                    <propertyInstance
+                      Id="0cf36791-1229-447a-8472-feeff316d079"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c10a798-6416-4d52-8bb9-357368c5e506">
+                    <propertyInstance
+                      Id="2a3b8e15-b443-47de-9ddc-1417c8df584c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8896ac81-8d6c-497c-9fb7-3bced6be61ff">
+                    <propertyInstance
+                      Id="32bae6db-2fb3-4ac3-9a55-33213f93e7c7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="548b23c1-3166-4841-b8e1-55d3f6f7c62c"
+        name="Thing"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="3d5c5c3d-da45-40af-be00-caf14dd332e5"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DThing"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="6d5d39bf-d45b-450a-9a2e-ecd9f4f0cf98"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9e459d85-9c3d-496c-89bd-f9e295e42426">
+                <propertyInstance
+                  Id="6ac9aa3d-5b8b-448e-9e1f-45f64b09a065"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eb3fb3fb-0936-4fdc-bb86-51e363ea7a9a">
+                <propertyInstance
+                  Id="1d5945aa-9d93-437a-b116-d548cd273bec"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fdb6ade7-9615-463e-8274-6ba7d392f309">
+                <propertyInstance
+                  Id="8f8c6732-13b7-4871-a68e-b1d21bc744b3"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2d63e1eb-5e28-4155-9733-caa006c09dbc">
+                <propertyInstance
+                  Id="5896068b-e234-4d00-bd96-63e3e019236b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a26f6e95-fd7f-4aef-a251-1ceb1b826d56"
+        name="Destination"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="af39f2b0-7c64-47ba-bc78-376b61d696a5"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DDestination"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="1f58fc93-0e98-4153-b092-44ebc95920d4"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b0029f85-cf88-4631-b009-5f539035de91">
+                <propertyInstance
+                  Id="8886f3f5-778c-4d8d-89e2-6b95e3b73105"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fd5fa368-2fff-474c-b7e9-ff348ba9b376">
+                <propertyInstance
+                  Id="4d3418b5-1516-4a8a-96ed-40a62f6001bb"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b886da18-d528-4af3-81b1-d0efabe2c5a3">
+                <propertyInstance
+                  Id="2f8e5cb4-c966-4a84-9157-cb9559626192"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ea9d0659-aff7-45c8-8524-f5878f7b778b">
+                <propertyInstance
+                  Id="7990f2d5-a8f5-447c-b496-d140a8138686"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="26f45566-9a3f-42d0-8779-2215bd24c253">
+                <propertyInstance
+                  Id="c13529fd-bb63-4a49-b066-f70ede0675ce"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="9ec39045-1bc9-4518-8ea9-4c052167ec59">
+            <interfaceMoniker
+              Id="548b23c1-3166-4841-b8e1-55d3f6f7c62c"
+              LastKnownName="Thing"
+              LastKnownLocation="Package2_0946.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="58f0ddf8-07a8-4c67-b364-d5423a0ccdc5"
+            name="Destination"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3a3cc7bd-f376-4072-9a20-c9cc51c739df"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DDestination Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d345a9d6-13b0-43a7-aa79-8eab5d79c080"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41196292-4380-4588-80b0-368192311b03">
+                    <propertyInstance
+                      Id="86b58eed-84eb-40f1-bac1-f868a6a74f18"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b1223fa-7628-4076-b872-17368b9ced6d">
+                    <propertyInstance
+                      Id="d8fe2e25-55a1-4db0-bc19-fb6dbe9e964f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f06b82f-8b5a-41a6-90de-dffd5357dd6f">
+                    <propertyInstance
+                      Id="4f9039db-dfcc-4e83-a629-5a6dc16b0476"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a298b376-5ea7-448c-bd1f-4d3932180a5f">
+                    <propertyInstance
+                      Id="542b2499-6adc-4a93-8241-0adb12b079a5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="284a5ced-7c81-4e1b-a9e5-12eaecafc742">
+                    <propertyInstance
+                      Id="f91b5e1d-cf61-4158-b6f9-bead2879315c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c49a0e77-5ff9-43d7-b60d-0df75bbd6fc3">
+                    <propertyInstance
+                      Id="95edf330-909e-4eb9-b7e4-85d4a4e891da"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fc941b59-c3d3-46d6-8c65-34700d737348"
+        name="Wall"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="1154feab-6bd6-421c-9d57-7b584784d777"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DWall"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="44ee7319-8a97-4f4c-95d6-b684073a7682"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="380a6eea-69e3-4fd1-ad36-c6cb10eae2b4">
+                <propertyInstance
+                  Id="5afcd95d-1fd2-4e96-957a-63a6d5bb921a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d40c5756-98b5-44f4-bf7d-9946814ebdab">
+                <propertyInstance
+                  Id="1163e16b-c85b-4053-9c06-1226d94699ad"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="394d5c73-9ce8-4be7-9a13-2bd91619fffa">
+                <propertyInstance
+                  Id="f7e1674a-86f7-4666-9a76-61a41de0864f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="faa4171e-86ec-437e-8f8a-e094fa406218">
+                <propertyInstance
+                  Id="19b6c27f-68da-4565-9bd7-ff5c0909d155"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="274a98de-f3d4-4773-beca-4b211b795127">
+                <propertyInstance
+                  Id="9c6258d5-5c95-4b50-b921-53335afce26e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="503487b9-9fe0-46cb-910c-50e9ebd307a5">
+            <interfaceMoniker
+              Id="548b23c1-3166-4841-b8e1-55d3f6f7c62c"
+              LastKnownName="Thing"
+              LastKnownLocation="Package2_0946.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7a6bf927-5e86-4547-9e32-9d67047eaa54"
+            name="Wall"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="903cf983-d78c-4781-b1ef-aa6eda7295d9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2Fc:%2Fusers%2Fnanne%2Fdocuments%2Fvisual studio 2012%2FProjects%2FSokoban%2FSokoban%2Fbin%2FDebug%2FSokoban.exe&quot; Namespace%3DSokoban.Domain.Things Type%3DWall Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b82289cc-26e4-4d31-9149-684f07b8642c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="965c7663-ed4b-41c3-be6a-aa61c4a63422">
+                    <propertyInstance
+                      Id="a8c4587f-7b87-4ae8-a181-6af00ab15984"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="be8b1696-d5f5-42ea-aba5-d2545d9917d1">
+                    <propertyInstance
+                      Id="2a21862e-f2f7-49c1-bb64-6623ffad1f0a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21752f22-baaf-428c-bc2b-78f913f622b5">
+                    <propertyInstance
+                      Id="582ab645-db4f-4756-808c-a9f755db7dbe"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c570aa14-789e-4cde-bbef-25941066c04d">
+                    <propertyInstance
+                      Id="35df5e42-7857-4cec-8db3-6a0a1c62fa8b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="33fed58e-8087-4752-b21b-000ea8aa7b42">
+                    <propertyInstance
+                      Id="c104ae26-0249-4d86-a2dd-3e0cb09a0ff8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e3fcfb4d-4bdf-48ea-8fb6-eccbe9d63440">
+                    <propertyInstance
+                      Id="bbe49847-78d6-4bf6-9edc-219f105afa92"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
