@@ -12,14 +12,15 @@ namespace Sokoban.Domain
         public int Width { get; private set; }
         public int Height { get; private set; }
 
+        // Map
         public Position Player { get; set; }
+
+        public List<Coffin> Coffins { get; private set; }
+        public List<Destination> Destinations { get; private set; }
 
         private IThing[,] _staticMap;
         private IThing[,] _dynamicMap;
-
-        private int _destinations = 0;
-        private int _coffinsOnDestinations = 0;
-       
+      
         public Map(String[] lines)
         {
             var t = Trim(lines);
@@ -27,6 +28,9 @@ namespace Sokoban.Domain
             var last = t.Item2;
             Height = lines.Length;
             Width = last + 1;
+
+            Coffins = new List<Coffin>();
+            Destinations = new List<Destination>();
 
             _staticMap = new IThing[Width, Height];
             _dynamicMap = new IThing[Width, Height];
@@ -121,23 +125,30 @@ namespace Sokoban.Domain
         private void Recognize(char letter, Position pos)
         {
             SetMap map = (target, cor, obj) => target[cor.X, cor.Y] = obj;
+            Destination destination;
+            Coffin coffin;
             switch (letter)
             {
                 case '#':
                     map(_staticMap, pos, new Wall());
                     break;
                 case 'o':
-                    map(_dynamicMap, pos, new Coffin());
+                    coffin = new Coffin();
+                    Coffins.Add(coffin);
+                    map(_dynamicMap, pos, coffin);
                     break;
                 case 'O':
+                    coffin = new Coffin {OnDestination = true};
+                    Coffins.Add(coffin);
                     map(_dynamicMap, pos, new Coffin());
-                    map(_staticMap, pos, new Destination());
-                    _destinations++;
-                    _coffinsOnDestinations++;
+                    destination = new Destination();
+                    Destinations.Add(destination);
+                    map(_staticMap, pos, destination);
                     break;
                 case 'x':
-                    map(_staticMap, pos, new Destination());
-                    _destinations++;
+                    destination = new Destination();
+                    Destinations.Add(destination);
+                    map(_staticMap, pos, destination);
                     break;
                 case '@':
                     map(_dynamicMap, pos, new Forklift());

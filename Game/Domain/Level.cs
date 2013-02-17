@@ -33,17 +33,9 @@ namespace Sokoban.Domain
             get { return _map.Player; }
             set { _map.Player = value; }
         }
-        //public int Width { get; private set; }
-        //public int Height { get; private set; }
-        //public Position Player { get; private set; }
-        //private int _destinations = 0;
-        //private int _coffinsOnDestinations = 0;
 
         public EventHandler<ThingChangeEvent> Moved;
         public EventHandler Won;
-
-        //private IThing[,] _staticMap;
-        //private IThing[,] _dynamicMap;
 
         public Level(String file)
         {
@@ -57,7 +49,7 @@ namespace Sokoban.Domain
             _map = new Map(lines);
         }
 
-        public virtual IThing Neighbours(Position pos, Direction direction)
+        public virtual IThing Neighbour(Position pos, Direction direction)
         {
             return Get(pos.Move(direction));
         }
@@ -67,22 +59,21 @@ namespace Sokoban.Domain
             return _map.Get(pos);
         }
 
-        private bool InBounds(Position pos)
-        {
-            return _map.InBounds(pos);
-        }
-
-
         public void Move(Direction direction)
         {
             // check for blocks
-            var neighbour = Neighbours(_map.Player, direction);
+            var neighbour = Neighbour(_map.Player, direction);
             if (neighbour is Coffin)
             {
                 var pos = Player.Move(direction);
-                if ((Neighbours(pos, direction) is Destination))
+                if ((Neighbour(pos, direction) is Destination))
                 {
                     ((Coffin)neighbour).OnDestination = true;
+
+                    if (_map.Coffins.Where(coffin => coffin.OnDestination).Count() == _map.Destinations.Count)
+                    {
+                        Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
+                    }
 //                    _coffinsOnDestinations++;
 //                    if (_coffinsOnDestinations == _destinations)
 //                    {
@@ -90,11 +81,10 @@ namespace Sokoban.Domain
 //                    }
                     // doe iets
                 }
-                else if (Neighbours(pos, direction) != null) return;
+                else if (Neighbour(pos, direction) != null) return;
                 else if (((Coffin) neighbour).OnDestination)
                 {
                     ((Coffin)neighbour).OnDestination = false;
-//                    _coffinsOnDestinations--;
                 }
                 _map.Move(pos, pos.Move(direction), Moved);
             }
