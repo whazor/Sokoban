@@ -84,7 +84,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\Direction.cs" />
-    <Compile Include="Domain\Level.cs" />
+    <Compile Include="Domain\Game.cs" />
     <Compile Include="Domain\Things\Coffin.cs" />
     <Compile Include="Domain\Things\Destination.cs" />
     <Compile Include="Domain\Things\Forklift.cs" />

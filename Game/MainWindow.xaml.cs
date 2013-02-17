@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using Sokoban.Domain;
 using Sokoban.Views;
+using Game = Sokoban.Domain.Game;
 
 namespace Sokoban
 {
@@ -41,8 +42,8 @@ namespace Sokoban
 
             if (!((bool) result)) return;
 
-            var level = new Level(dlg.FileName);
-            var window = new Game(level);
+            var level = new Game(dlg.FileName);
+            var window = new Views.Game(level);
 
             Close();
             window.ShowDialog();
