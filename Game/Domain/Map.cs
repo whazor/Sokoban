@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sokoban.Domain.Helpers;
 using Sokoban.Domain.Things;
 
@@ -14,7 +12,7 @@ namespace Sokoban.Domain
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public Position Player { get; private set; }
+        public Position Player { get; set; }
 
         private IThing[,] _staticMap;
         private IThing[,] _dynamicMap;
@@ -41,16 +39,25 @@ namespace Sokoban.Domain
                 }
             }
 
+            if (CheckForPercolation())
+            {
+                //TODO: iets met de exception doen
+                throw new LevelException("Er zit een opening in het level, dus het level is kapot.");
+            } 
+        }
+
+        private bool CheckForPercolation()
+        {
             var isOpen = new Func<Position, bool>(thing => !(_staticMap[thing.X, thing.Y] is Wall));
-            var getUnionId = new Func<Position, int>(thing => thing.Y % Width + thing.X * Height);
-            var uf = new UnionFind(Width * Height); 
+            var getUnionId = new Func<Position, int>(thing => thing.Y%Width + thing.X*Height);
+            var uf = new UnionFind(Width*Height);
             for (var i = 0; i < Width; i++)
             {
                 for (var j = 0; j < Height; j++)
                 {
                     var pos = new Position(i, j);
-                    if(!isOpen(pos)) return;
-                    
+                    if (!isOpen(pos)) continue;
+
                     Direction[] directions = {Direction.Down, Direction.Up, Direction.Left, Direction.Right};
                     foreach (var tmp in directions
                         .Select(pos.Move)
@@ -81,15 +88,33 @@ namespace Sokoban.Domain
                 if (uf.IsConnected(playerId, getUnionId(right)))
                     percolates = true;
             }
-            if (percolates)
-            {
-                throw new LevelException("Er zit een opening in het level.");
-            }
+            return percolates;
         }
 
-        private bool InBounds(Position pos)
+        public bool InBounds(Position pos)
         {
-            return !(pos.X < 0 || pos.Y < 0 || pos.Y > Height || pos.Y > Width);
+            return (pos.X >= 0 && pos.Y >= 0 && pos.Y < Height && pos.X < Width);
+        }
+
+        public void Move(Position o, Position n, EventHandler<ThingChangeEvent> moved)
+        {
+            if (!InBounds(o)) return;
+            if (!InBounds(n)) return;
+
+            if (_dynamicMap[o.X, o.Y] == null) return;
+            _dynamicMap[n.X, n.Y] = _dynamicMap[o.X, o.Y];
+            _dynamicMap[o.X, o.Y] = null;
+
+            if (moved == null) return;
+            moved(this, new ThingChangeEvent(o, n));
+        }
+
+        public virtual IThing Get(Position pos)
+        {
+            // check for out of bounds
+            if (!InBounds(pos)) return null;
+
+            return _dynamicMap[pos.X, pos.Y] ?? _staticMap[pos.X, pos.Y];
         }
 
         private delegate void SetMap(IThing[,] map, Position pos, IThing thing);
@@ -143,9 +168,9 @@ namespace Sokoban.Domain
 
     internal class LevelException : Exception
     {
-        public LevelException(string erZitEenOpeningInHetLevel)
+        public LevelException(string message)
+            : base(message)
         {
-            throw new NotImplementedException();
         }
     }
 }
