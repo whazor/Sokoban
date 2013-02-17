@@ -19,19 +19,19 @@ namespace Sokoban.Views
     /// <summary>
     /// Interaction logic for Game.xaml
     /// </summary>
-    public partial class Game : Window
+    public partial class Game
     {
-        private readonly Level _level;
+        private readonly Domain.Game _game;
         private readonly Image[,] _images;
-        public Game(Level level)
+        public Game(Domain.Game game)
         {
-            _level = level;
+            _game = game;
             InitializeComponent();
-            _images = new Image[_level.Width, _level.Height];
-            Height = _level.Height * 60 + 100;
-            Width = _level.Width * 60 + 100;
+            _images = new Image[_game.Width, _game.Height];
+            Height = _game.Height * 60 + 100;
+            Width = _game.Width * 60 + 100;
             Redraw();
-            _level.Moved += Moved;
+            _game.Moved += Moved;
         }
 
         private void Moved(object sender, ThingChangeEvent thingChangeEvent)
@@ -48,19 +48,19 @@ namespace Sokoban.Views
             ImageHolder.Children.Clear();
             ImageHolder.ColumnDefinitions.Clear();
             ImageHolder.RowDefinitions.Clear();
-            for (var x = 0; x < _level.Width; x++)
+            for (var x = 0; x < _game.Width; x++)
             {
                 var col = new ColumnDefinition { Width = new GridLength(60) };
                 ImageHolder.ColumnDefinitions.Add(col);
             }
-            for (var y = 0; y < _level.Height; y++)
+            for (var y = 0; y < _game.Height; y++)
             {
                 var row = new RowDefinition { Height = new GridLength(60) };
                 ImageHolder.RowDefinitions.Add(row);
             }
-            for (var x = 0; x < _level.Width; x++)
+            for (var x = 0; x < _game.Width; x++)
             {
-                for (var y = 0; y < _level.Height; y++)
+                for (var y = 0; y < _game.Height; y++)
                 {                    
                     DrawImage(x, y);
                 }
@@ -72,15 +72,16 @@ namespace Sokoban.Views
             if (_images[x, y] != null)
                 ImageHolder.Children.Remove(_images[x, y]);
 
-            var thing = _level.Get(x, y);
+            var thing = _game.Get(x, y);
             if (thing == null) return;
             _images[x, y] = new Image {Source = (ImageSource) FindResource(thing.ResourceName)};
-            
-            if (thing is Forklift)
+
+            var forklift = thing as Forklift;
+            if (forklift != null)
             {
                 _images[x, y].RenderTransformOrigin = new Point(0.5, 0.5);
-                int rotate = 0;
-                switch (((Forklift)thing).Direction)
+                var rotate = 0;
+                switch (forklift.Direction)
                 {
                     case Direction.Up: 
                         rotate = 270;
@@ -108,16 +109,16 @@ namespace Sokoban.Views
             switch (e.Key)
             {
                 case Key.Right:
-                    _level.Move(Direction.Right);
+                    _game.Move(Direction.Right);
                     break;
                 case Key.Left:
-                    _level.Move(Direction.Left);
+                    _game.Move(Direction.Left);
                     break;
                 case Key.Up:
-                    _level.Move(Direction.Up);
+                    _game.Move(Direction.Up);
                     break;
                 case Key.Down:
-                    _level.Move(Direction.Down);
+                    _game.Move(Direction.Down);
                     break;
             }
             
@@ -130,7 +131,7 @@ namespace Sokoban.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _level.Reset();
+            _game.Reset();
             Redraw();
         }
 

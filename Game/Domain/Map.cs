@@ -18,8 +18,8 @@ namespace Sokoban.Domain
         public List<Coffin> Coffins { get; private set; }
         public List<Destination> Destinations { get; private set; }
 
-        private IThing[,] _staticMap;
-        private IThing[,] _dynamicMap;
+        private readonly IThing[,] _staticMap;
+        private readonly IThing[,] _dynamicMap;
       
         public Map(String[] lines)
         {

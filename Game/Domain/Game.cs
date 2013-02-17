@@ -20,7 +20,7 @@ namespace Sokoban.Domain
         public Position New { get; set; }
     }
 
-    public class Level
+    public class Game
     {
         private readonly string _file;
         private Map _map;
@@ -37,7 +37,7 @@ namespace Sokoban.Domain
         public EventHandler<ThingChangeEvent> Moved;
         public EventHandler Won;
 
-        public Level(String file)
+        public Game(String file)
         {
             _file = file;
             Load(file);
@@ -63,14 +63,15 @@ namespace Sokoban.Domain
         {
             // check for blocks
             var neighbour = Neighbour(_map.Player, direction);
-            if (neighbour is Coffin)
+            var coffin1 = neighbour as Coffin;
+            if (coffin1 != null)
             {
                 var pos = Player.Move(direction);
                 if ((Neighbour(pos, direction) is Destination))
                 {
-                    ((Coffin)neighbour).OnDestination = true;
+                    coffin1.OnDestination = true;
 
-                    if (_map.Coffins.Where(coffin => coffin.OnDestination).Count() == _map.Destinations.Count)
+                    if (_map.Coffins.Count(coffin => coffin.OnDestination) == _map.Destinations.Count)
                     {
                         Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
                     }
@@ -82,9 +83,9 @@ namespace Sokoban.Domain
                     // doe iets
                 }
                 else if (Neighbour(pos, direction) != null) return;
-                else if (((Coffin) neighbour).OnDestination)
+                else if (coffin1.OnDestination)
                 {
-                    ((Coffin)neighbour).OnDestination = false;
+                    coffin1.OnDestination = false;
                 }
                 _map.Move(pos, pos.Move(direction), Moved);
             }
