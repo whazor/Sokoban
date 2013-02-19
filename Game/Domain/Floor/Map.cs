@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sokoban.Domain.Events;
 using Sokoban.Domain.Helpers;
 using Sokoban.Domain.Things;
 
@@ -21,12 +22,15 @@ namespace Sokoban.Domain
         private readonly IThing[,] _staticMap;
         private readonly IThing[,] _dynamicMap;
       
-        public Map(String[] lines)
+        public Map(IList<string> lines)
         {
+            if(lines.Count == 0)
+                throw new LevelException("Dit level is leeg.");
+
             var t = Trim(lines);
             var first = t.Item1;
             var last = t.Item2;
-            Height = lines.Length;
+            Height = lines.Count;
             Width = last + 1;
 
             Coffins = new List<Coffin>();
@@ -35,7 +39,7 @@ namespace Sokoban.Domain
             _staticMap = new IThing[Width, Height];
             _dynamicMap = new IThing[Width, Height];
 
-            for (var i = 0; i < lines.Length; i++)
+            for (var i = 0; i < lines.Count; i++)
             {
                 for (var j = 0; j < lines[i].Length; j++)
                 {
@@ -45,16 +49,30 @@ namespace Sokoban.Domain
 
             if (CheckForPercolation())
             {
-                //TODO: iets met de exception doen
                 throw new LevelException("Er zit een opening in het level, dus het level is kapot.");
             } 
+
+            if (Destinations.Count == 0 || Coffins.Count < Destinations.Count)
+            {
+                throw new LevelException("Dit level is onspeelbaar, er is namelijk geen manier om dit te winnen.");
+            }
         }
 
         private bool CheckForPercolation()
         {
             var isOpen = new Func<Position, bool>(thing => !(_staticMap[thing.X, thing.Y] is Wall));
-            var getUnionId = new Func<Position, int>(thing => thing.Y%Width + thing.X*Height);
-            var uf = new UnionFind(Width*Height);
+            var getUnionId = new Func<Position, int>(thing =>
+                {
+                    if (Width >= Height)
+                    {
+                        return thing.Y % Height + thing.X * Height;
+                    }
+                    else
+                    {
+                        return thing.X % Width + thing.Y * Width;
+                    }
+                });
+            var uf = new UnionFind(Width * Height);
             for (var i = 0; i < Width; i++)
             {
                 for (var j = 0; j < Height; j++)
@@ -177,8 +195,17 @@ namespace Sokoban.Domain
         }
     }
 
-    internal class LevelException : Exception
+    public class LevelException : Exception
     {
+        public string Level { get; set; }
+        public override string Message { 
+            get
+            {
+                if (Level != null)
+                    return Level + " - " + base.Message;
+                return base.Message;
+            }
+        }
         public LevelException(string message)
             : base(message)
         {

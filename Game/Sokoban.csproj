@@ -69,9 +69,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Domain\Events\ThingChangeEvent.cs" />
     <Compile Include="Domain\Helpers\UnionFind.cs" />
-    <Compile Include="Domain\Map.cs" />
-    <Compile Include="Domain\Position.cs" />
+    <Compile Include="Domain\Floor\Map.cs" />
+    <Compile Include="Domain\Floor\Position.cs" />
+    <Compile Include="Levels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Levels.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
@@ -83,7 +89,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Domain\Direction.cs" />
+    <Compile Include="Domain\Floor\Direction.cs" />
     <Compile Include="Domain\Game.cs" />
     <Compile Include="Domain\Things\Coffin.cs" />
     <Compile Include="Domain\Things\Destination.cs" />
@@ -113,187 +119,73 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Levels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Levels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Levels\level00.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level01.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level02.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level03.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level04.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level05.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level06.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level07.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level08.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level09.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level10.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level11.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level12.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level13.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level14.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level15.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level16.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level17.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level18.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level19.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level20.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level21.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level22.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level23.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level24.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level25.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level26.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level27.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level28.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level29.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level30.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level31.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level32.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level33.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level34.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level35.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level36.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level37.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level38.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level39.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level40.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level41.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level42.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level43.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level44.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level45.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level46.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level47.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level48.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level49.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level50.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level51.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level52.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level53.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level54.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level55.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level56.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level57.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Levels\level58.soko">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <None Include="Levels\level00.soko" />
+    <None Include="Levels\level01.soko" />
+    <None Include="Levels\level02.soko" />
+    <None Include="Levels\level03.soko" />
+    <None Include="Levels\level04.soko" />
+    <None Include="Levels\level05.soko" />
+    <None Include="Levels\level06.soko" />
+    <None Include="Levels\level07.soko" />
+    <None Include="Levels\level08.soko" />
+    <None Include="Levels\level09.soko" />
+    <None Include="Levels\level10.soko" />
+    <None Include="Levels\level11.soko" />
+    <None Include="Levels\level12.soko" />
+    <None Include="Levels\level13.soko" />
+    <None Include="Levels\level14.soko" />
+    <None Include="Levels\level15.soko" />
+    <None Include="Levels\level16.soko" />
+    <None Include="Levels\level17.soko" />
+    <None Include="Levels\level18.soko" />
+    <None Include="Levels\level19.soko" />
+    <None Include="Levels\level20.soko" />
+    <None Include="Levels\level21.soko" />
+    <None Include="Levels\level22.soko" />
+    <None Include="Levels\level23.soko" />
+    <None Include="Levels\level24.soko" />
+    <None Include="Levels\level25.soko" />
+    <None Include="Levels\level26.soko" />
+    <None Include="Levels\level27.soko" />
+    <None Include="Levels\level28.soko" />
+    <None Include="Levels\level29.soko" />
+    <None Include="Levels\level30.soko" />
+    <None Include="Levels\level31.soko" />
+    <None Include="Levels\level32.soko" />
+    <None Include="Levels\level33.soko" />
+    <None Include="Levels\level34.soko" />
+    <None Include="Levels\level35.soko" />
+    <None Include="Levels\level36.soko" />
+    <None Include="Levels\level37.soko" />
+    <None Include="Levels\level38.soko" />
+    <None Include="Levels\level39.soko" />
+    <None Include="Levels\level40.soko" />
+    <None Include="Levels\level41.soko" />
+    <None Include="Levels\level42.soko" />
+    <None Include="Levels\level43.soko" />
+    <None Include="Levels\level44.soko" />
+    <None Include="Levels\level45.soko" />
+    <None Include="Levels\level46.soko" />
+    <None Include="Levels\level47.soko" />
+    <None Include="Levels\level48.soko" />
+    <None Include="Levels\level49.soko" />
+    <None Include="Levels\level50.soko" />
+    <None Include="Levels\level51.soko" />
+    <None Include="Levels\level52.soko" />
+    <None Include="Levels\level53.soko" />
+    <None Include="Levels\level54.soko" />
+    <None Include="Levels\level55.soko" />
+    <None Include="Levels\level56.soko" />
+    <None Include="Levels\level57.soko" />
+    <None Include="Levels\level58.soko" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -338,6 +230,7 @@
   <ItemGroup>
     <Resource Include="Images\box_ok.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

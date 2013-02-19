@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using Sokoban.Domain.Events;
 using Sokoban.Domain.Things;
 
 namespace Sokoban.Domain
 {
-    public class ThingChangeEvent : EventArgs
+    public class LoadableLevel
     {
-        public ThingChangeEvent(Position pOld, Position pNew)
-        {
-            Old = pOld;
-            New = pNew;
-        }
+        public string Name { get; set; }
 
-        public Position Old { get; set; }
-        public Position New { get; set; }
+        public LoadableLevel(String name)
+        {
+            Name = name;
+        }
     }
 
     public class Game
     {
-        private readonly string _file;
+        #region Properties
+        private string _file;
         private Map _map;
 
         public int Height { get { return _map.Height; } }
@@ -36,19 +39,41 @@ namespace Sokoban.Domain
 
         public EventHandler<ThingChangeEvent> Moved;
         public EventHandler Won;
-
+        #endregion
+        
+        #region Contructors
         public Game(String file)
         {
             _file = file;
-            Load(file);
-        }
-
-        private void Load(string file)
-        {
             var lines = System.IO.File.ReadAllLines(file);
             _map = new Map(lines);
         }
 
+        public Game(LoadableLevel game)
+        {
+            var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
+
+            _map = new Map(Encoding.UTF8.GetString(bytes).Split(new[] { "\n", "\r\n" }, StringSplitOptions.None));
+//            var level = Levels.ResourceManager.GetStream(game.Name);
+//            var memoryStream = new MemoryStream();
+//            level.CopyTo(memoryStream);
+//            _map = new Map( Encoding.UTF8.GetString(memoryStream.ToArray()).Split());
+        }
+
+        #endregion
+
+        #region Static methods
+        public static List<LoadableLevel> GetLevels()
+        {
+            
+//            var test = new ResourceManager("Strings", typeof(Game).Assembly);
+            var resourceManager = Levels.ResourceManager;
+            var levels = resourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+            return (from DictionaryEntry level in levels select new LoadableLevel((string)level.Key)).ToList();
+        }
+        #endregion
+
+        #region Methods
         public virtual IThing Neighbour(Position pos, Direction direction)
         {
             return Get(pos.Move(direction));
@@ -63,29 +88,26 @@ namespace Sokoban.Domain
         {
             // check for blocks
             var neighbour = Neighbour(_map.Player, direction);
-            var coffin1 = neighbour as Coffin;
-            if (coffin1 != null)
+
+            // is the player pushing a coffin?
+            var coffin = neighbour as Coffin;
+            if (coffin != null)
             {
                 var pos = Player.Move(direction);
                 if ((Neighbour(pos, direction) is Destination))
                 {
-                    coffin1.OnDestination = true;
+                    coffin.OnDestination = true;
 
-                    if (_map.Coffins.Count(coffin => coffin.OnDestination) == _map.Destinations.Count)
+                    if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count)
                     {
                         Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
-                    }
-//                    _coffinsOnDestinations++;
-//                    if (_coffinsOnDestinations == _destinations)
-//                    {
                         //Won(this, new EventArgs());
-//                    }
-                    // doe iets
+                    }
                 }
                 else if (Neighbour(pos, direction) != null) return;
-                else if (coffin1.OnDestination)
+                else if (coffin.OnDestination)
                 {
-                    coffin1.OnDestination = false;
+                    coffin.OnDestination = false;
                 }
                 _map.Move(pos, pos.Move(direction), Moved);
             }
@@ -104,7 +126,9 @@ namespace Sokoban.Domain
 
         public void Reset()
         {
-            Load(_file);
+            var lines = System.IO.File.ReadAllLines(_file);
+            _map = new Map(lines);
         }
+        #endregion
     }
 }
