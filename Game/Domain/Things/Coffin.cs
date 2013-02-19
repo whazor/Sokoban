@@ -10,7 +10,6 @@ namespace Sokoban.Domain.Things
 {
     class Coffin : IThing
     {
-        public bool Dynamic { get { return true; } }
         public string ResourceName
         {
             get

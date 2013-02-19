@@ -10,7 +10,6 @@ namespace Sokoban.Domain.Things
 {
     class Wall : IThing
     {
-        public bool Dynamic { get { return false; } }
         public string ResourceName { get { return "wall"; } }
     }
 }

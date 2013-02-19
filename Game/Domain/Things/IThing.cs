@@ -9,7 +9,6 @@ namespace Sokoban.Domain.Things
 {
     public interface IThing
     {
-        bool Dynamic { get; }
         string ResourceName { get; }
         
     }
