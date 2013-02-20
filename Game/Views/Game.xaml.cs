@@ -125,11 +125,6 @@ namespace Sokoban.Views
             
         }
 
-        private void Game_OnKeyUp(object sender, KeyEventArgs e)
-        {
-//            throw new NotImplementedException();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _game.Reset();
