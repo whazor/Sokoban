@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Resources;
 using System.Text;
-using System.Threading.Tasks;
-using Sokoban.Domain.Events;
-using Sokoban.Domain.Highscores;
-using Sokoban.Domain.Things;
+using System.Windows.Threading;
+using Sokoban.Domain.Domain.Events;
+using Sokoban.Domain.Domain.Floor;
+using Sokoban.Domain.Domain.Highscores;
+using Sokoban.Domain.Domain.Things;
 
-namespace Sokoban.Domain
+namespace Sokoban.Domain.Domain
 {
     public class Game
     {
         #region Properties
-        private string _file;
+        private readonly string[] _lines; 
         private Map _map;
         private int _moves;
         private int _playtime;
-        private System.Windows.Threading.DispatcherTimer _dispatcherTimer;
+        private DispatcherTimer _dispatcherTimer;
 
         public int Height { get { return _map.Height; } }
         public int Width { get { return _map.Width; } }
@@ -39,34 +36,30 @@ namespace Sokoban.Domain
         #region Contructors
         public Game(String file)
         {
-            _file = file;
-            var lines = File.ReadAllLines(file);
-            _map = new Map(lines);
+            _lines = File.ReadAllLines(file);
+            _map = new Map(_lines);
             InitiateTimer();
         }
 
         public Game(Level game)
         {
             var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
-
-            _map = new Map(Encoding.UTF8.GetString(bytes).Split(new[] { "\n", "\r\n" }, StringSplitOptions.None));
-//            var level = Levels.ResourceManager.GetStream(game.Name);
-//            var memoryStream = new MemoryStream();
-//            level.CopyTo(memoryStream);
-//            _map = new Map( Encoding.UTF8.GetString(memoryStream.ToArray()).Split());
+            if (bytes == null) return;
+            _lines = Encoding.UTF8.GetString(bytes).Split(new[] {"\n", "\r\n"}, StringSplitOptions.None);
+            _map = new Map(_lines);
             InitiateTimer();
         }
-
         #endregion
 
         private void InitiateTimer() 
         {
             _playtime = 0;
-            _dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            if (_dispatcherTimer != null) _dispatcherTimer.Stop();
+            _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Tick += (sender, args) => {
                 _playtime++;
                 if (Score != null)
-                    Score(this, new ScoreChangeEvent(this._moves, this._playtime));
+                    Score(this, new ScoreChangeEvent(_moves, _playtime));
             };
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             _dispatcherTimer.Start();
@@ -121,7 +114,7 @@ namespace Sokoban.Domain
             //Add to score
             _moves++;
             if(Score != null)
-                Score(this, new ScoreChangeEvent(this._moves, this._playtime));
+                Score(this, new ScoreChangeEvent(_moves, _playtime));
         }
 
         public virtual IThing Get(int pos, int i)
@@ -131,8 +124,7 @@ namespace Sokoban.Domain
 
         public void Reset()
         {
-            var lines = System.IO.File.ReadAllLines(_file);
-            _map = new Map(lines);
+            _map = new Map(_lines);
             InitiateTimer();
         }
         #endregion

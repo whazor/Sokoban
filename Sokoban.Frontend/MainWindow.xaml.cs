@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Sokoban.Domain.Highscores;
+using Sokoban.Domain.Domain.Highscores;
 using Sokoban.Frontend.Views;
+using List = Sokoban.Domain.Domain.Highscores.List;
 
 namespace Sokoban.Frontend
 {
@@ -23,7 +24,7 @@ namespace Sokoban.Frontend
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Level> _levels = Sokoban.Domain.Highscores.List.Get();  
+        List<Level> _levels = List.Get();  
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace Sokoban.Frontend
         private void Level_OnClick(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
-            var game = new Game(new Domain.Game(new Level((string) btn.Tag)));
+            var game = new Game(new Domain.Domain.Game(new Level((string) btn.Tag)));
             game.Show();
         }
     }

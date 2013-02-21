@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
-namespace Sokoban.Domain.Highscores
+namespace Sokoban.Domain.Domain.Highscores
 {
     public class Level
     {

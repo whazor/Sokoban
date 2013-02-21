@@ -1,4 +1,4 @@
-﻿namespace Sokoban.Domain.Helpers
+﻿namespace Sokoban.Domain.Domain.Helpers
 {
     /**
      * This class is ported from the Stanford Algorithms library.

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sokoban.Domain.Events;
-using Sokoban.Domain.Helpers;
-using Sokoban.Domain.Things;
+using Sokoban.Domain.Domain.Events;
+using Sokoban.Domain.Domain.Helpers;
+using Sokoban.Domain.Domain.Things;
 
-namespace Sokoban.Domain
+namespace Sokoban.Domain.Domain.Floor
 {
     class Map
     {

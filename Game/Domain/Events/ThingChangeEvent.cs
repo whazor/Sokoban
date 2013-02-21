@@ -1,6 +1,7 @@
 ﻿using System;
+using Sokoban.Domain.Domain.Floor;
 
-namespace Sokoban.Domain.Events
+namespace Sokoban.Domain.Domain.Events
 {
     public class ThingChangeEvent : EventArgs
     {

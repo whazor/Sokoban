@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sokoban.Domain;
+using Sokoban.Domain.Domain;
+using Sokoban.Domain.Domain.Floor;
+using Sokoban.Domain.Domain.Highscores;
 
 namespace Sokoban.Testing
 {
@@ -10,7 +13,7 @@ namespace Sokoban.Testing
         [TestMethod]
         public void LevelChecking()
         {
-            var levels = Domain.Highscores.List.Get();
+            var levels = List.Get();
 
             foreach (var game in levels)
             {

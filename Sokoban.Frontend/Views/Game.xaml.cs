@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Sokoban.Domain;
-using Sokoban.Domain.Events;
-using Sokoban.Domain.Things;
+using Sokoban.Domain.Domain.Events;
+using Sokoban.Domain.Domain.Floor;
+using Sokoban.Domain.Domain.Things;
 
 namespace Sokoban.Frontend.Views
 {
@@ -22,9 +14,9 @@ namespace Sokoban.Frontend.Views
     /// </summary>
     public partial class Game
     {
-        private readonly Domain.Game _game;
+        private readonly Domain.Domain.Game _game;
         private readonly Image[,] _images;
-        public Game(Domain.Game game)
+        public Game(Domain.Domain.Game game)
         {
             _game = game;
             InitializeComponent();
