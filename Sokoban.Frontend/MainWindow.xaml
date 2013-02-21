@@ -14,7 +14,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="22"  />
-                        <TextBlock Grid.Column="1" Text="{Binding Highscore}" Margin="10,0,0,0" />
+                        <TextBlock Grid.Column="1" Text="{Binding Highscore, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, Mode=OneWay}" Margin="10,0,0,0" />
                         <Button Tag="{Binding Name}" Content="Spelen!" Grid.Column="1" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="Level_OnClick" />
                     </Grid>
                 </DataTemplate>

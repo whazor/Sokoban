@@ -103,18 +103,16 @@ namespace Sokoban.Domain.Domain
             ((Forklift)Get(Player)).Direction = direction;
             _map.Move(Player, Player.Move(direction), Moved);
             Player = Player.Move(direction);
-
-            if (has_won)
-            {
-                _level.SaveHighscore(_playtime, _moves);
-                _dispatcherTimer.Stop();
-                MessageBox.Show("Je hebt gewonnen!");
-            }
-
-            //Add to score
             _moves++;
-            if(Score != null)
+
+            if (Score != null)
                 Score(this, new ScoreChangeEvent(_moves, _playtime));
+
+            if (!has_won) return;
+
+            _level.SaveHighscore(_playtime, _moves);
+            _dispatcherTimer.Stop();
+            MessageBox.Show("Je hebt gewonnen!");
         }
 
         public virtual IThing Get(int pos, int i)
@@ -125,6 +123,8 @@ namespace Sokoban.Domain.Domain
         public void Reset()
         {
             _map = new Map(_lines);
+            _moves = 0;
+            _playtime = 0;
             InitiateTimer();
         }
         #endregion

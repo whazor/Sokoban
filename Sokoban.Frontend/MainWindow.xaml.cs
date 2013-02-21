@@ -36,7 +36,6 @@ namespace Sokoban.Frontend
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-
             var levels = _levels.Values.ToList();
             levels.Sort((level, level1) => System.String.Compare(level.Name, level1.Name, System.StringComparison.Ordinal));
             Levels.ItemsSource = levels;
