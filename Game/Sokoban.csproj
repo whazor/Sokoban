@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Domain\Events\ScoreChangeEvent.cs" />
     <Compile Include="Domain\Events\ThingChangeEvent.cs" />
     <Compile Include="Domain\Helpers\UnionFind.cs" />
     <Compile Include="Domain\Floor\Map.cs" />
