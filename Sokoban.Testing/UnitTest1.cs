@@ -15,7 +15,7 @@ namespace Sokoban.Testing
         {
             var levels = List.Get();
 
-            foreach (var game in levels)
+            foreach (var game in levels.Values)
             {
                 try
                 {

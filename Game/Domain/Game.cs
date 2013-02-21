@@ -17,6 +17,7 @@ namespace Sokoban.Domain.Domain
         private Map _map;
         private int _moves;
         private int _playtime;
+        private Level _level;
         private DispatcherTimer _dispatcherTimer;
 
         public int Height { get { return _map.Height; } }
@@ -34,15 +35,9 @@ namespace Sokoban.Domain.Domain
         #endregion
         
         #region Contructors
-        public Game(String file)
-        {
-            _lines = File.ReadAllLines(file);
-            _map = new Map(_lines);
-            InitiateTimer();
-        }
-
         public Game(Level game)
         {
+            _level = game;
             var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
             if (bytes == null) return;
             _lines = Encoding.UTF8.GetString(bytes).Split(new[] {"\n", "\r\n"}, StringSplitOptions.None);
@@ -93,6 +88,7 @@ namespace Sokoban.Domain.Domain
                     if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count)
                     {
                         _dispatcherTimer.Stop();
+                        _level.SaveHighscore(_playtime, _moves);
                         Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
                         //Won(this, new EventArgs());
                     }
