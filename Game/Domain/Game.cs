@@ -124,10 +124,7 @@ namespace Sokoban.Domain.Domain
         {
             _map = new Map(_lines);
             _moves = 0;
-<<<<<<< HEAD
             _playtime = 0;
-=======
->>>>>>> 512a636e2df5d8d71052150bc56d92f15f687586
             InitiateTimer();
         }
         #endregion
