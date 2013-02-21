@@ -24,7 +24,8 @@ namespace Sokoban.Frontend
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Level> _levels = List.Get();  
+        List<Level> _levels = List.Get();
+        private Game _game;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,8 +42,10 @@ namespace Sokoban.Frontend
         private void Level_OnClick(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
-            var game = new Game(new Domain.Domain.Game(new Level((string) btn.Tag)));
-            game.Show();
+            if(_game != null)
+                _game.Close();
+            _game = new Game(new Domain.Domain.Game(new Level((string) btn.Tag)));
+            _game.Show();
         }
     }
 }
