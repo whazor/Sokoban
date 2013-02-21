@@ -73,6 +73,9 @@
     <Compile Include="Screen_1.xaml.cs">
       <DependentUpon>Screen_1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Screen_1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -119,6 +126,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sketch.Flow" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\box_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\destination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\forklift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\muurtje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Game\Sokoban.Domain.csproj">
+      <Project>{d1b6cac3-8320-4f80-8b52-9871d6a8a499}</Project>
+      <Name>Sokoban.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sokoban", "Game\Sokoban.csproj", "{D1B6CAC3-8320-4F80-8B52-9871D6A8A499}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sokoban.Domain", "Game\Sokoban.Domain.csproj", "{D1B6CAC3-8320-4F80-8B52-9871D6A8A499}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sokoban.Testing", "Sokoban.Testing\Sokoban.Testing.csproj", "{613DFC12-4E26-4E35-9F0D-441F4CC9AFCB}"
 EndProject

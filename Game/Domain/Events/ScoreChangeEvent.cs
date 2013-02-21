@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sokoban.Domain.Events
 {
-    class ScoreChangeEvent : EventArgs
+    public class ScoreChangeEvent : EventArgs
     {
         public int PlayTime {get; private set; }
         public int Moves {get; private set; }

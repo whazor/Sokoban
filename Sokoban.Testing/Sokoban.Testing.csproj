@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game\Sokoban.csproj">
+    <ProjectReference Include="..\Game\Sokoban.Domain.csproj">
       <Project>{D1B6CAC3-8320-4F80-8B52-9871D6A8A499}</Project>
-      <Name>Sokoban</Name>
+      <Name>Sokoban.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

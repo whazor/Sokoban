@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sokoban {
+namespace Sokoban.Domain {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Sokoban {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sokoban.Levels", typeof(Levels).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sokoban.Domain.Levels", typeof(Levels).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
