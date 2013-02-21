@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sokoban.Domain;
+using Sokoban.Domain.Domain;
+using Sokoban.Domain.Domain.Floor;
 
 namespace Sokoban.Testing
 {

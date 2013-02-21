@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
-namespace Sokoban.Domain.Highscores
+namespace Sokoban.Domain.Domain.Highscores
 {
     public class List
     {
         //private string _filename;
         private static List _current;  
-        private System.Collections.Generic.List<Level> _levels;
+        private readonly System.Collections.Generic.List<Level> _levels;
 
         public List() //string name
         {
@@ -21,7 +16,7 @@ namespace Sokoban.Domain.Highscores
             var levels = resourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
             _levels = (from DictionaryEntry level in levels select new Level((string)level.Key)).ToList();
-            _levels.Sort((level, level1) => level.Name.CompareTo(level1.Name));
+            _levels.Sort((level, level1) => System.String.Compare(level.Name, level1.Name, System.StringComparison.Ordinal));
         }
 
 

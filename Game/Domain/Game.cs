@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Resources;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Threading;
+using Sokoban.Domain.Domain.Events;
+using Sokoban.Domain.Domain.Floor;
+using Sokoban.Domain.Domain.Things;
 using Sokoban.Domain.Events;
 using Sokoban.Domain.Highscores;
 using Sokoban.Domain.Things;
 
-namespace Sokoban.Domain
+namespace Sokoban.Domain.Domain
 {
     public class Game
     {
         #region Properties
-        private string[] _lines; 
+        private readonly string[] _lines; 
         private Map _map;
         private int _moves;
         private int _playtime;
-        
+        private DispatcherTimer _dispatcherTimer;
 
         public int Height { get { return _map.Height; } }
         public int Width { get { return _map.Width; } }
@@ -47,6 +46,7 @@ namespace Sokoban.Domain
         public Game(Level game)
         {
             var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
+            if (bytes == null) return;
             _lines = Encoding.UTF8.GetString(bytes).Split(new[] {"\n", "\r\n"}, StringSplitOptions.None);
             _map = new Map(_lines);
             InitiateTimer();
@@ -56,14 +56,15 @@ namespace Sokoban.Domain
         private void InitiateTimer() 
         {
             _playtime = 0;
-            var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += (sender, args) => {
+            if (_dispatcherTimer != null) _dispatcherTimer.Stop();
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Tick += (sender, args) => {
                 _playtime++;
                 if (Score != null)
-                    Score(this, new ScoreChangeEvent(this._moves, this._playtime));
+                    Score(this, new ScoreChangeEvent(_moves, _playtime));
             };
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            _dispatcherTimer.Start();
         }
 
         #region Methods
@@ -114,7 +115,7 @@ namespace Sokoban.Domain
             //Add to score
             _moves++;
             if(Score != null)
-                Score(this, new ScoreChangeEvent(this._moves, this._playtime));
+                Score(this, new ScoreChangeEvent(_moves, _playtime));
         }
 
         public virtual IThing Get(int pos, int i)

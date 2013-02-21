@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using Sokoban.Domain.Domain.Floor;
 
-namespace Sokoban.Domain.Things
+namespace Sokoban.Domain.Domain.Things
 {
     public class Forklift : IThing
     {
