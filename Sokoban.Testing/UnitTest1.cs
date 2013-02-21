@@ -10,7 +10,9 @@ namespace Sokoban.Testing
         [TestMethod]
         public void LevelChecking()
         {
-            foreach (var game in Game.GetLevels())
+            var levels = Domain.Highscores.List.Get();
+
+            foreach (var game in levels)
             {
                 try
                 {
