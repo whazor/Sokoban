@@ -69,11 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Domain\Events\ScoreChangeEvent.cs" />
     <Compile Include="Domain\Events\ThingChangeEvent.cs" />
     <Compile Include="Domain\Helpers\UnionFind.cs" />
     <Compile Include="Domain\Floor\Map.cs" />
     <Compile Include="Domain\Floor\Position.cs" />
+    <Compile Include="Domain\Highscores\Level.cs" />
+    <Compile Include="Domain\Highscores\List.cs" />
     <Compile Include="Levels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -8,20 +8,11 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using Sokoban.Domain.Events;
+using Sokoban.Domain.Highscores;
 using Sokoban.Domain.Things;
 
 namespace Sokoban.Domain
 {
-    public class LoadableLevel
-    {
-        public string Name { get; set; }
-
-        public LoadableLevel(String name)
-        {
-            Name = name;
-        }
-    }
-
     public class Game
     {
         #region Properties
@@ -48,11 +39,11 @@ namespace Sokoban.Domain
         public Game(String file)
         {
             _file = file;
-            var lines = System.IO.File.ReadAllLines(file);
+            var lines = File.ReadAllLines(file);
             _map = new Map(lines);
         }
 
-        public Game(LoadableLevel game)
+        public Game(Level game)
         {
             var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
 
@@ -65,22 +56,11 @@ namespace Sokoban.Domain
 
         #endregion
 
-        #region Static methods
-        public static List<LoadableLevel> GetLevels()
+        private void InitiateTimer() 
         {
-            
-//            var test = new ResourceManager("Strings", typeof(Game).Assembly);
-            var resourceManager = Levels.ResourceManager;
-            var levels = resourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-            return (from DictionaryEntry level in levels select new LoadableLevel((string)level.Key)).ToList();
-        }
-        #endregion
-
-        private virtual void InitiateTimer() 
-        {
-            this._playtime = 0;
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += (sender, args) => this._playtime++;
+            _playtime = 0;
+            var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += (sender, args) => _playtime++;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
         }
