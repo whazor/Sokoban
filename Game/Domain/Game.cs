@@ -62,7 +62,11 @@ namespace Sokoban.Domain
         {
             _playtime = 0;
             var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += (sender, args) => _playtime++;
+            dispatcherTimer.Tick += (sender, args) => {
+                _playtime++;
+                if (Score != null)
+                    Score(this, new ScoreChangeEvent(this._moves, this._playtime));
+            };
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
         }
