@@ -20,6 +20,7 @@ namespace Sokoban.Domain
         private Map _map;
         private int _moves;
         private int _playtime;
+        private System.Windows.Threading.DispatcherTimer _dispatcherTimer;
 
         public int Height { get { return _map.Height; } }
         public int Width { get { return _map.Width; } }
@@ -61,14 +62,14 @@ namespace Sokoban.Domain
         private void InitiateTimer() 
         {
             _playtime = 0;
-            var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += (sender, args) => {
+            _dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            _dispatcherTimer.Tick += (sender, args) => {
                 _playtime++;
                 if (Score != null)
                     Score(this, new ScoreChangeEvent(this._moves, this._playtime));
             };
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            _dispatcherTimer.Start();
         }
 
         #region Methods
@@ -98,6 +99,7 @@ namespace Sokoban.Domain
 
                     if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count)
                     {
+                        _dispatcherTimer.Stop();
                         Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
                         //Won(this, new EventArgs());
                     }
