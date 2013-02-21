@@ -129,6 +129,7 @@ namespace Sokoban.Domain.Domain
         public void Reset()
         {
             _map = new Map(_lines);
+            _moves = 0;
             InitiateTimer();
         }
         #endregion
