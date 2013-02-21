@@ -50,6 +50,7 @@ namespace Sokoban.Domain
             _file = file;
             var lines = System.IO.File.ReadAllLines(file);
             _map = new Map(lines);
+            InitiateTimer();
         }
 
         public Game(LoadableLevel game)
@@ -61,6 +62,7 @@ namespace Sokoban.Domain
 //            var memoryStream = new MemoryStream();
 //            level.CopyTo(memoryStream);
 //            _map = new Map( Encoding.UTF8.GetString(memoryStream.ToArray()).Split());
+            InitiateTimer();
         }
 
         #endregion
@@ -144,6 +146,7 @@ namespace Sokoban.Domain
         {
             var lines = System.IO.File.ReadAllLines(_file);
             _map = new Map(lines);
+            InitiateTimer();
         }
         #endregion
     }
