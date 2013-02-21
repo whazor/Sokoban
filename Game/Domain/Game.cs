@@ -78,7 +78,7 @@ namespace Sokoban.Domain
         }
         #endregion
 
-        private virtual void InitiateTimer() 
+        private void InitiateTimer() 
         {
             this._playtime = 0;
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
