@@ -16,10 +16,11 @@ namespace Sokoban.Domain
     public class Game
     {
         #region Properties
-        private string _file;
+        private string[] _lines; 
         private Map _map;
         private int _moves;
         private int _playtime;
+        
 
         public int Height { get { return _map.Height; } }
         public int Width { get { return _map.Width; } }
@@ -38,24 +39,18 @@ namespace Sokoban.Domain
         #region Contructors
         public Game(String file)
         {
-            _file = file;
-            var lines = File.ReadAllLines(file);
-            _map = new Map(lines);
+            _lines = File.ReadAllLines(file);
+            _map = new Map(_lines);
             InitiateTimer();
         }
 
         public Game(Level game)
         {
             var bytes = Levels.ResourceManager.GetObject(game.Name) as Byte[];
-
-            _map = new Map(Encoding.UTF8.GetString(bytes).Split(new[] { "\n", "\r\n" }, StringSplitOptions.None));
-//            var level = Levels.ResourceManager.GetStream(game.Name);
-//            var memoryStream = new MemoryStream();
-//            level.CopyTo(memoryStream);
-//            _map = new Map( Encoding.UTF8.GetString(memoryStream.ToArray()).Split());
+            _lines = Encoding.UTF8.GetString(bytes).Split(new[] {"\n", "\r\n"}, StringSplitOptions.None);
+            _map = new Map(_lines);
             InitiateTimer();
         }
-
         #endregion
 
         private void InitiateTimer() 
@@ -125,8 +120,7 @@ namespace Sokoban.Domain
 
         public void Reset()
         {
-            var lines = System.IO.File.ReadAllLines(_file);
-            _map = new Map(lines);
+            _map = new Map(_lines);
             InitiateTimer();
         }
         #endregion
