@@ -158,7 +158,7 @@ namespace Sokoban.Domain.Domain.Floor
                 case 'O':
                     coffin = new Coffin {OnDestination = true};
                     Coffins.Add(coffin);
-                    map(_dynamicMap, pos, new Coffin());
+                    map(_dynamicMap, pos, coffin);
                     destination = new Destination();
                     Destinations.Add(destination);
                     map(_staticMap, pos, destination);

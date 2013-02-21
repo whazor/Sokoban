@@ -11,5 +11,9 @@
         }
 
         public bool OnDestination { get; set; }
+        public Coffin()
+        {
+            OnDestination = false;
+        }
     }
 }
