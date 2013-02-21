@@ -27,6 +27,8 @@ namespace Sokoban.Domain
         #region Properties
         private string _file;
         private Map _map;
+        private int _moves;
+        private int _playtime;
 
         public int Height { get { return _map.Height; } }
         public int Width { get { return _map.Width; } }
@@ -39,6 +41,7 @@ namespace Sokoban.Domain
 
         public EventHandler<ThingChangeEvent> Moved;
         public EventHandler Won;
+        public EventHandler<ScoreChangeEvent> Score;
         #endregion
         
         #region Contructors
@@ -72,6 +75,15 @@ namespace Sokoban.Domain
             return (from DictionaryEntry level in levels select new LoadableLevel((string)level.Key)).ToList();
         }
         #endregion
+
+        private virtual void InitiateTimer() 
+        {
+            this._playtime = 0;
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += (sender, args) => this._playtime++;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+        }
 
         #region Methods
         public virtual IThing Neighbour(Position pos, Direction direction)
@@ -117,6 +129,10 @@ namespace Sokoban.Domain
             ((Forklift)Get(Player)).Direction = direction;
             _map.Move(Player, Player.Move(direction), Moved);
             Player = Player.Move(direction);
+
+            //Add to score
+            if(Score != null)
+                Score(this, new ScoreChangeEvent(this._moves, this._playtime));
         }
 
         public virtual IThing Get(int pos, int i)
