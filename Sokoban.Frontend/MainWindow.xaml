@@ -3,6 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="580" Width="670">
     <Grid>
+    	<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sokoban" VerticalAlignment="Top" FontSize="96" FontFamily="Gulim" Margin="0,35,0,0"/>
+    	<DataGrid Margin="10,145.25,10,10">
+    		<DataGrid.Columns>
+    			<DataGridHyperlinkColumn Header="Level"/>
+    			<DataGridTextColumn Header="Highscore"/>
+    			<DataGridHyperlinkColumn Header="Spelen"/>
+    		</DataGrid.Columns>
+    	</DataGrid>
 
     </Grid>
 </Window>

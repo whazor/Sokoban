@@ -41,6 +41,7 @@ namespace Sokoban.Domain
             _file = file;
             var lines = File.ReadAllLines(file);
             _map = new Map(lines);
+            InitiateTimer();
         }
 
         public Game(Level game)
@@ -52,6 +53,7 @@ namespace Sokoban.Domain
 //            var memoryStream = new MemoryStream();
 //            level.CopyTo(memoryStream);
 //            _map = new Map( Encoding.UTF8.GetString(memoryStream.ToArray()).Split());
+            InitiateTimer();
         }
 
         #endregion
@@ -111,6 +113,7 @@ namespace Sokoban.Domain
             Player = Player.Move(direction);
 
             //Add to score
+            _moves++;
             if(Score != null)
                 Score(this, new ScoreChangeEvent(this._moves, this._playtime));
         }
@@ -124,6 +127,7 @@ namespace Sokoban.Domain
         {
             var lines = System.IO.File.ReadAllLines(_file);
             _map = new Map(lines);
+            InitiateTimer();
         }
         #endregion
     }
