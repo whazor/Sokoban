@@ -63,8 +63,16 @@ namespace Sokoban.Domain.Domain.Highscores
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
+            var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void RemoveHighscores()
+        {
+            if (File.Exists("highscores/" + Name))
+                File.Delete("highscores/" + Name);
+            LoadHighscores();
+            OnPropertyChanged("Highscore");
         }
     }
 }

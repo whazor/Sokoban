@@ -5,7 +5,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sokoban" VerticalAlignment="Top" FontSize="96" FontFamily="Gulim" Margin="0,35,0,0"/>
 
-        <ListView Margin="10,150,10,10"  Name="Levels"  HorizontalContentAlignment="Stretch">
+        <ListView Margin="10,150,10,10"  Name="Levels"  HorizontalContentAlignment="Stretch" KeyUp="Levels_OnKeyUp">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="4">

@@ -24,7 +24,8 @@ namespace Sokoban.Frontend
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly Dictionary<String, Level> _levels = List.Get();  
+        readonly Dictionary<String, Level> _levels = List.Get();
+        private List<Level> _list; 
         private Game _game;
 
         public MainWindow()
@@ -36,9 +37,9 @@ namespace Sokoban.Frontend
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            var levels = _levels.Values.ToList();
-            levels.Sort((level, level1) => System.String.Compare(level.Name, level1.Name, System.StringComparison.Ordinal));
-            Levels.ItemsSource = levels;
+            _list = _levels.Values.ToList();
+            _list.Sort((level, level1) => System.String.Compare(level.Name, level1.Name, System.StringComparison.Ordinal));
+            Levels.ItemsSource = _list;
         }
 
         private void Level_OnClick(object sender, RoutedEventArgs e)
@@ -48,6 +49,12 @@ namespace Sokoban.Frontend
                 _game.Close();
             _game = new Game(new Domain.Domain.Game(_levels[(string)btn.Tag]));
             _game.Show();
+        }
+
+        private void Levels_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete)
+                _list[Levels.SelectedIndex].RemoveHighscores();
         }
     }
 }
