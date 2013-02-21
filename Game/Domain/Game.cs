@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Threading;
 using Sokoban.Domain.Domain.Events;
 using Sokoban.Domain.Domain.Floor;
@@ -78,6 +79,8 @@ namespace Sokoban.Domain.Domain
 
         public void Move(Direction direction)
         {
+            bool has_won = false;
+
             // check for blocks
             var neighbour = Neighbour(_map.Player, direction);
 
@@ -90,12 +93,7 @@ namespace Sokoban.Domain.Domain
                 {
                     coffin.OnDestination = true;
 
-                    if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count)
-                    {
-                        _dispatcherTimer.Stop();
-                        Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
-                        //Won(this, new EventArgs());
-                    }
+                    if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count) has_won = true;
                 }
                 else if (Neighbour(pos, direction) != null) return;
                 else if (coffin.OnDestination)
@@ -110,6 +108,12 @@ namespace Sokoban.Domain.Domain
             ((Forklift)Get(Player)).Direction = direction;
             _map.Move(Player, Player.Move(direction), Moved);
             Player = Player.Move(direction);
+
+            if (has_won)
+            {
+                _dispatcherTimer.Stop();
+                MessageBox.Show("Je hebt gewonnen!");
+            }
 
             //Add to score
             _moves++;
