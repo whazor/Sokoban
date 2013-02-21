@@ -5,10 +5,8 @@ using System.Text;
 using System.Windows.Threading;
 using Sokoban.Domain.Domain.Events;
 using Sokoban.Domain.Domain.Floor;
+using Sokoban.Domain.Domain.Highscores;
 using Sokoban.Domain.Domain.Things;
-using Sokoban.Domain.Events;
-using Sokoban.Domain.Highscores;
-using Sokoban.Domain.Things;
 
 namespace Sokoban.Domain.Domain
 {

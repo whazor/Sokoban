@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sokoban.Domain.Domain.Events;
+using Sokoban.Domain.Domain.Helpers;
 using Sokoban.Domain.Domain.Things;
-using Sokoban.Domain.Events;
-using Sokoban.Domain.Helpers;
-using Sokoban.Domain.Things;
 
 namespace Sokoban.Domain.Domain.Floor
 {

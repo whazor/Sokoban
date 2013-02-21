@@ -6,7 +6,6 @@ using System.Windows.Media;
 using Sokoban.Domain.Domain.Events;
 using Sokoban.Domain.Domain.Floor;
 using Sokoban.Domain.Domain.Things;
-using Sokoban.Domain.Events;
 
 namespace Sokoban.Frontend.Views
 {
