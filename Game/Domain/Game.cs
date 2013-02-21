@@ -92,6 +92,7 @@ namespace Sokoban.Domain.Domain
 
                     if (_map.Coffins.Count(c => c.OnDestination) == _map.Destinations.Count)
                     {
+                        _dispatcherTimer.Stop();
                         Console.Out.Write("Gewonnen!"); //TODO: hier iets doen
                         //Won(this, new EventArgs());
                     }
