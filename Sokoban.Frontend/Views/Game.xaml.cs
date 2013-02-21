@@ -15,7 +15,7 @@ using Sokoban.Domain;
 using Sokoban.Domain.Events;
 using Sokoban.Domain.Things;
 
-namespace Sokoban.Views
+namespace Sokoban.Frontend.Views
 {
     /// <summary>
     /// Interaction logic for Game.xaml

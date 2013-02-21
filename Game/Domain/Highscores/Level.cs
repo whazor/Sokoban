@@ -15,7 +15,7 @@ namespace Sokoban.Domain.Highscores
         public Level(String name)
         {
             Name = name;
-            Highscore = "100!!";
+            Highscore = "Huidige highscore: 100!!";
         }
 
         public bool ReadElement(XmlReader xmlReader)

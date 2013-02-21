@@ -81,13 +81,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Levels.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Game.xaml.cs">
-      <DependentUpon>Game.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Domain\Floor\Direction.cs" />
     <Compile Include="Domain\Game.cs" />
     <Compile Include="Domain\Things\Coffin.cs" />
@@ -95,14 +88,6 @@
     <Compile Include="Domain\Things\Forklift.cs" />
     <Compile Include="Domain\Things\IThing.cs" />
     <Compile Include="Domain\Things\Wall.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Views\Game.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

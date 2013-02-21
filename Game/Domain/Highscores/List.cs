@@ -21,17 +21,7 @@ namespace Sokoban.Domain.Highscores
             var levels = resourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
             _levels = (from DictionaryEntry level in levels select new Level((string)level.Key)).ToList();
-//            var f = XmlReader.Create(_filename);
-//            while(f.Read())
-//                if (f.NodeType == XmlNodeType.Element)
-//                {
-//                    var level = new Level();
-//                    if (level.ReadElement(f))
-//                    {
-//                        _levels.Add(level);
-//                    }
-//                }
-//            f.Close();
+            _levels.Sort((level, level1) => level.Name.CompareTo(level1.Name));
         }
 
 

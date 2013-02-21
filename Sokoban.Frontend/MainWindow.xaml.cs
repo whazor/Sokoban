@@ -12,17 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Sokoban.Domain.Highscores;
+using Sokoban.Frontend.Views;
 
 namespace Sokoban.Frontend
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Level> _levels = Sokoban.Domain.Highscores.List.Get();  
         public MainWindow()
         {
             InitializeComponent();
+//            grid.DataContext = Sokoban.Domain.Highscores.List.Get();
+            
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            Levels.ItemsSource = _levels;
+            //Levels.ItemsSource = Sokoban.Domain.Highscores.List.Get();
+        }
+
+        private void Level_OnClick(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var game = new Game(new Domain.Game(new Level((string) btn.Tag)));
+            game.Show();
         }
     }
 }

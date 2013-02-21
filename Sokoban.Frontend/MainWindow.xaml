@@ -1,16 +1,25 @@
 ﻿<Window x:Class="Sokoban.Frontend.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="580" Width="670">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:frontend="clr-namespace:Sokoban.Frontend"
+        Title="MainWindow" Height="580" Width="670" Initialized="Window_Initialized">
     <Grid>
-    	<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sokoban" VerticalAlignment="Top" FontSize="96" FontFamily="Gulim" Margin="0,35,0,0"/>
-    	<DataGrid Margin="10,145.25,10,10">
-    		<DataGrid.Columns>
-    			<DataGridHyperlinkColumn Header="Level"/>
-    			<DataGridTextColumn Header="Highscore"/>
-    			<DataGridHyperlinkColumn Header="Spelen"/>
-    		</DataGrid.Columns>
-    	</DataGrid>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sokoban" VerticalAlignment="Top" FontSize="96" FontFamily="Gulim" Margin="0,35,0,0"/>
+
+        <ListView Margin="10,150,10,10"  Name="Levels"  HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Key" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="22"  />
+                        <TextBlock Grid.Column="1" Text="{Binding Highscore}" Margin="10,0,0,0" />
+                        <Button Tag="{Binding Name}" Content="Spelen!" Grid.Column="1" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="Level_OnClick" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Window>
