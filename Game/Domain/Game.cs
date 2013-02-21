@@ -133,6 +133,7 @@ namespace Sokoban.Domain
             Player = Player.Move(direction);
 
             //Add to score
+            _moves++;
             if(Score != null)
                 Score(this, new ScoreChangeEvent(this._moves, this._playtime));
         }
