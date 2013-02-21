@@ -33,6 +33,14 @@ namespace Sokoban.Frontend.Views
             Width = _game.Width * 60 + 100;
             Redraw();
             _game.Moved += Moved;
+            _game.Score += Score;
+        }
+
+        private void Score(object sender, ScoreChangeEvent s)
+        {
+            var min = Math.Floor((decimal) s.PlayTime/60);
+            var sec = (s.PlayTime%60).ToString("00");
+            ScoreField.Text = String.Format("Tijd: {0}:{1} - Stappen: {2}", min, sec, s.Moves);
         }
 
         private void Moved(object sender, ThingChangeEvent thingChangeEvent)

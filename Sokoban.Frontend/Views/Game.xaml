@@ -15,11 +15,9 @@
         <ImageBrush ImageSource="/Sokoban.Frontend;component/Images/paper.png"/>
     </Window.Background>
     <Grid>
-        <Grid x:Name="ImageHolder" HorizontalAlignment="Center" VerticalAlignment="Center" >
-
-        </Grid>
+        <Grid x:Name="ImageHolder" Margin="10,10,10,35" />
         <Button Content="Opnieuw" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="104" RenderTransformOrigin="0.5,0.5" Click="Button_Click">
         </Button>
-        <TextBox Name="Tijd" Margin="10,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20" Width="120" IsEnabled="False"/>
+        <TextBlock Name="ScoreField" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20" Width="297" IsEnabled="False"/>
     </Grid>
 </Window>
